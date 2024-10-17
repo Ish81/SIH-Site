@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map Example</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <style>
+        #map {
+            height: 500px; /* Set the height of the map */
+            width: 100%; /* Set the width of the map */
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script>
+        // Initialize the map with a global view
+        var map = L.map('map').setView([22.0, -30.0], 3);
+
+        // Add a tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a polygon to cover the Gulf of Mexico
+        var gulfPolygon = L.polygon([
+            [26.0, -98.0],  // Northwest edge near Texas
+            [30.0, -95.0],  // Houston area
+            [29.0, -92.0],  // Offshore Louisiana
+            [30.0, -88.0],  // Offshore Mississippi/Alabama
+            [28.0, -85.0],  // Near Florida Panhandle
+            [27.0, -83.0],  // Near Tampa, Florida
+            [25.0, -82.0],  // Southwest Florida coast
+            [22.0, -85.0],  // Near western Cuba
+            [21.0, -87.0],  // Northern Yucatan Peninsula
+            [20.5, -91.0],  // Central Gulf of Mexico
+            [18.5, -94.0],  // Southwestern Gulf, near Veracruz, Mexico
+            [22.5, -96.0],  // Offshore Mexico, near Tampico
+            [25.0, -97.0],  // Near Brownsville, Texas
+            [26.0, -98.0]   // Close to the starting point, Texas
+        ]).addTo(map);
+        gulfPolygon.bindPopup("This polygon roughly covers the Gulf of Mexico.");
+
+        // Add a polygon to cover the Mumbai area in the Arabian Sea
+        var mumbaiPolygon = L.polygon([
+            [21.0, 67.0],  // West of Pakistan
+            [20.5, 68.5],  // Arabian Sea, near Pakistan
+            [19.0, 70.0],  // Arabian Sea, further south
+            [15.5, 72.0],  // Arabian Sea, southwest of Maharashtra
+            [13.0, 74.0],  // Near Mangalore, Karnataka coast
+            [15.5, 73.5],  // Northeast of Mumbai
+            [20.0, 73.0],  // Near Mumbai, Maharashtra coast
+            [21.0, 72.0],  // Northern edge near Gujarat
+        ]).addTo(map);
+        mumbaiPolygon.bindPopup("This polygon roughly covers the sea area near Mumbai, extending towards Pakistan and near Mangalore.");
+
+        // Add a marker inside the Mumbai area polygon
+        var mumbaiMarker = L.marker([19.0, 72.8]).addTo(map);
+        mumbaiMarker.bindPopup("<b>Mumbai</b><br>This is the city of Mumbai.");
+
+        // Add circles in random places in the sea inside the Mumbai polygon
+        var mumbaiCircle1 = L.circle([18.8, 72.2], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        mumbaiCircle1.bindPopup("This is an oil container ship.");
+
+        var mumbaiCircle2 = L.circle([19.3, 71.5], {
+            color: 'blue',
+            fillColor: '#30f',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        mumbaiCircle2.bindPopup("This is an oil container ship.");
+
+        var yellowCircle = L.circle([20.353139, 70.368722], {
+            color: 'yellow',
+            fillColor: '#ff0',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        yellowCircle.bindPopup("This is an oil container ship.");
+
+        // Add a marker for the Gulf of Mexico
+        var gulfMarker = L.marker([24.0, -90.0]).addTo(map);
+        gulfMarker.bindPopup("<b>Gulf of Mexico</b><br>This is the Gulf of Mexico.");
+
+        // Add a circle in the Gulf of Mexico polygon
+        var gulfCircle = L.circle([25.0, -94.0], {
+            color: 'green',
+            fillColor: '#0f3',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        gulfCircle.bindPopup("This is an oil container ship.");
+
+        // Add markers and circles at specified coordinates
+        var blueCircle = L.circle([23.129972, -92.743333], {
+            color: 'blue',
+            fillColor: '#30f',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        blueCircle.bindPopup("This is an oil container ship.");
+
+        var redCircle = L.circle([25.515222, -85.139833], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        redCircle.bindPopup("This is an oil container ship.");
+
+        // Add a marker for the Arabian Sea
+        var arabianSeaMarker = L.marker([19.139333, 72.482222]).addTo(map);
+        arabianSeaMarker.bindPopup("This is the Arabian Sea.");
+
+        // Add circles at the new specified coordinates
+        var circle1 = L.circle([-4.030750, 66.565611], {
+            color: 'blue',
+            fillColor: '#30f',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        circle1.bindPopup("This is an oil container ship.");
+
+        var circle2 = L.circle([-26.089472, 65.537167], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        circle2.bindPopup("This is an oil container ship.");
+
+        var circle3 = L.circle([4.595444, -25.870028], {
+            color: 'blue',
+            fillColor: '#30f',
+            fillOpacity: 0.5,
+            radius: 5000
+        }).addTo(map);
+        circle3.bindPopup("This is an oil container ship.");
+
+        // Add a standalone popup in the Gulf of Mexico
+        var gulfPopup = L.popup()
+            .setLatLng([25.0, -90.0])
+            .setContent("This is the Gulf of Mexico.")
+            .openOn(map);
+    </script>
+</body>
+</html>

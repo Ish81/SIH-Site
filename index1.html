@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>AlgoAces</title>
+    <!-- Add Leaflet CSS for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>AlgoAces</h2>
+            </div>
+            <ul class="list1">
+                <li class="lis"><a href="#">Dashboard</a></li>
+                <li class="lis"><a href="#">Map</a></li>
+                <li class="lis"><a href="#">Alerts</a></li>
+                <li class="lis"><a href="#">Settings</a></li>
+            </ul>
+        </aside>
+        <div class="main-content">
+            <div class="search">
+                <input type="text" class="searchbar" placeholder="Search for ships">
+                <button class="btn">Search</button>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="ship-info">
+                <div class="ship-info-header">
+                    <h3 id="shipName">NADA [KM]</h3>
+                    <p id="shipFlag">IMO 8814275</p>
+                </div>
+                <img id="shipImage" src="./images.jpeg" alt="Ship Image">
+                <div class="ship-details">
+                    <p>Bulk Carrier</p>
+                    <p>Anomaly detected</p>
+                    <p><strong>Underway using engine</strong></p>
+                    <p>Destination: MM RGN to IQ UQR</p>
+                    <p>ETA: 2024-09-11 15:00</p>
+                    <p>Status: Underway using Engine</p>
+                    <p>SOG/COG: 5.8kn/176°</p>
+                    <p>Draught: 5.5m</p>
+                </div>
+                <div class="ship-info-actions">
+                    <button>Vessel details</button>
+                    <button>Alert details</button>
+                </div>
+            </div>
+
+            <div class="alert">
+                <h2>Alert!</h2>
+                <p>Anomaly detected in vessel NADA (IMO 8814275). Immediate inspection required.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
